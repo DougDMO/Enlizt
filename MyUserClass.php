@@ -11,13 +11,8 @@ class MyUserClass {
             exit;
         }
 
-        $results = array();
-        $data = $dbconn->query('select name from user');
-
-        while($row = $data->fetch_array()){
-            array_push($results,$row);
-        }
-
+        $results = $dbconn->query('select name from user');
+        $results = $dbconn->fetchAll();
         sort($results);
         return json_encode($results);
 
