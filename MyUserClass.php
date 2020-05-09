@@ -16,11 +16,11 @@ class MyUserClass {
     public function getUserList() {
 
         $this->results = $this->dbconn->query('select name from user');
+        sort($this->results);
     }
     
     public function __toString() {
     
-        sort($this->results);
         return json_encode($this->results);
     }
 
