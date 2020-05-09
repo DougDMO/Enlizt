@@ -1,21 +1,28 @@
 <?php
 
 class MyUserClass {
-
-    public function getUserList($servidor, $usuario, $pass) {
-
-        $dbconn = new DatabaseConnection($servidor, $usuario, $pass);
-
-        if($dbconn->connect_error){
-            echo "Erro: " . $dbconn->connect_error;
+    
+    private $dbconn;
+    private $results;
+    
+    public function __construct() {
+        $this->dbconn = DatabaseConnection("localhost","user","senha);
+        if($this->dbconn->connect_error){
+            echo "Erro: " . $this->dbconn->connect_error;
             exit;
         }
+    }
 
-        $results = $dbconn->query('select name from user');
-        $results = $dbconn->fetchAll();
-        sort($results);
-        return json_encode($results);
+    public function getUserList() {
 
+        $this->results = $this->dbconn->query('select name from user');
+    }
+    
+    public function __toString() {
+    
+        $this->results = $dbconn->fetchAll();
+        sort($this->results);
+        return json_encode($this->results);
     }
 
 }
