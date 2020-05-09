@@ -6,7 +6,7 @@ class MyUserClass {
     private $results;
     
     public function __construct() {
-        $this->dbconn = DatabaseConnection("localhost","user","senha);
+        $this->dbconn = DatabaseConnection("localhost","user","senha");
         if($this->dbconn->connect_error){
             echo "Erro: " . $this->dbconn->connect_error;
             exit;
