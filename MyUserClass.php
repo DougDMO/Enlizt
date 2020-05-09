@@ -20,7 +20,6 @@ class MyUserClass {
     
     public function __toString() {
     
-        $this->results = $dbconn->fetchAll();
         sort($this->results);
         return json_encode($this->results);
     }
