@@ -6,10 +6,11 @@ class MyUserClass {
     private $results;
     
     public function __construct() {
+        
+        try {
         $this->dbconn = DatabaseConnection("localhost","user","senha");
-        if($this->dbconn->connect_error){
+        }catch{
             echo "Erro: " . $this->dbconn->connect_error;
-            exit;
         }
     }
 
